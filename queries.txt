@@ -1,0 +1,47 @@
+CREATE TABLE
+CREATE TABLE cars (id int primary key, model varchar(255), year int, price int, transmission varchar(255), mileage int, fuelType varchar(255), tax int, mpg float, engineSize float, type varchar(255));
+--
+INSERT DATA
+
+insert into cars values 
+ (12,'5 Series',	2016,	16000,	'Automatic',	62794,	'Diesel',	160,	51.4,	3,	'bmw'),
+ (11,'1 Series',	2017,	12750,'Automatic',	26676,	'Diesel',	145,	72.4	,1.5,	'bmw'),
+ (10,'7 Series',	2014,	14500,	'Automatic',	39554,	'Diesel',	160,	50.4,	3,	'bmw'),
+ (9,'5 Series',	2016,	14900,	'Automatic',	35309,	'Diesel',	125,	60.1,	2,	'bmw')
+;
+insert into cars values 
+( 8,'5 Series',	2014,	11200,	'Automatic',	67068,	'Diesel',	125,	57.6,	2,	'bmw'),
+(7,'6 Series',	2018,	27000,	'Automatic',	14827,	'Petrol',	145,	42.8,	2,	'bmw')
+;
+insert into cars values ( 6,'A1',	2016,	13900,	'Automatic',	32260,	'Petrol',	30,	58.9,	1.4,	'audi');
+insert into cars values (  5,'A3',	2019,	17300,'Manual',	1998,	'Petrol',	145,	49.6,	1,	'audi');
+insert into cars values (  4,'A4',	2017,	16800,	'Automatic',	25952,	'Diesel',	145,	67.3,	2,	'audi');
+insert into cars values ( 3,'A1',	2016,	11000,	'Manual',	29946,	'Petrol',	30,	55.4,	1.4,	'audi');
+insert into cars values ( 2,'A6',	2016,	16500,	'Automatic',	36203,	'Diesel',	20,	64.2,	2,	'audi');
+insert into cars values ( 1,'A1',	2017,	12500,	'Manual',	15735,	'Petrol',	150,	55.4,	1.4,	'audi');
+
+--
+
+QUERIES FOR MILESTONES
+
+MILESTONE2
+select * from cars where id = 1
+MILESTONE3
+select * from cars where year=(select max(year) from cars) AND price=(select min(price) from cars);
+MILESTONE4
+select * from cars where fuelType='Petrol' and transmission='Automatic' and type='bmw' and mileage=(select max(mileage) from cars)
+MILESTONE5
+select * from cars where fuelType='Diesel' and transmission='Manual' and type='audi' and mileage=(select max(mileage) from cars)
+MILESTONE6
+select * from cars where engineSize = 2 order by price desc limit 10
+MILESTONE7
+select * from cars where mileage > 70000 limit 5
+MILESTONE8
+select year, transmission from cars where fuelType='Petrol' and tax>200 limit 5
+MILESTONE9
+select * from cars where transmission='Automatic' and type = 'bmw' and price between 80000 and 100000
+MILESTONE10
+select * from cars where type='audi' and transmission='Semi-Auto' and mpg > 60 order by price desc;
+MILESTONE11
+select distinct type, year, model from cars where price = (select max(price) from cars);
+
